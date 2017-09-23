@@ -179,7 +179,7 @@ void libbootimg_init_new(struct bootimg *img)
     memcpy(img->hdr.magic, BOOT_MAGIC, BOOT_MAGIC_SIZE);
     img->hdr.page_size = DEFAULT_PAGE_SIZE;
     img->hdr_info = malloc(sizeof(struct boot_img_elf_info));
-    memset(img->hdr_info, sizeof(struct boot_img_elf_info), 0);
+    memset(img->hdr_info, 0, sizeof(struct boot_img_elf_info));
     img->hdr_info->cmdline_signature = 0;
     img->is_elf = 0;
 
