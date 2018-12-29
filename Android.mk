@@ -14,7 +14,8 @@ LOCAL_MODULE_PATH := $(TARGET_OUT_OPTIONAL_EXECUTABLES)
 LOCAL_UNSTRIPPED_PATH := $(TARGET_OUT_EXECUTABLES_UNSTRIPPED)
 
 LOCAL_CFLAGS := -DDEBUG_KMSG
-LOCAL_STATIC_LIBRARIES := libc libcutils libmincrypt
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/libmincrypt/includes
+LOCAL_STATIC_LIBRARIES := libc libcutils libmincryptlibbootimg
 
 include $(BUILD_EXECUTABLE)
 
@@ -26,7 +27,8 @@ LOCAL_MODULE := bbootimge_host
 LOCAL_MODULE_STEM := bbootimg
 LOCAL_MODULE_TAGS := optional
 
-LOCAL_STATIC_LIBRARIES := libmincrypt
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/libmincrypt/includes
+LOCAL_STATIC_LIBRARIES := libmincryptlibbootimg
 
 include $(BUILD_HOST_EXECUTABLE)
 
@@ -42,7 +44,8 @@ LOCAL_MODULE_STEM := bbootimg
 LOCAL_SRC_FILES:= src/bbootimg.c src/libbootimg.c
 
 LOCAL_CFLAGS := -DDEBUG_KMSG
-LOCAL_STATIC_LIBRARIES := libmincrypt
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/libmincrypt/includes
+LOCAL_STATIC_LIBRARIES := libmincryptlibbootimg
 LOCAL_SHARED_LIBRARIES := libc libcutils
 
 include $(BUILD_EXECUTABLE)
@@ -54,8 +57,11 @@ LOCAL_SRC_FILES := src/libbootimg.c
 LOCAL_MODULE := libbootimg
 LOCAL_MODULE_TAGS := eng
 
-LOCAL_WHOLE_STATIC_LIBRARIES := libmincrypt
+LOCAL_C_INCLUDES := $(LOCAL_PATH)/libmincrypt/includes
+LOCAL_WHOLE_STATIC_LIBRARIES := libmincryptlibbootimg
 
 LOCAL_CFLAGS := -DDEBUG_KMSG
 
 include $(BUILD_STATIC_LIBRARY)
+
+include $(LOCAL_PATH)/libmincrypt/Android.mk
